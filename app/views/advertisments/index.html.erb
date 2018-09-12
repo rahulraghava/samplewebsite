@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Advertisments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Kmdriven</th>
+      <th>Ownercount</th>
+      <th>Price</th>
+      <th>Color</th>
+      <th>Fueltype</th>
+      <th>Brand</th>
+      <th>User</th>
+      <th>Variant</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @advertisments.each do |advertisment| %>
+      <tr>
+        <td><%= advertisment.year %></td>
+        <td><%= advertisment.kmdriven %></td>
+        <td><%= advertisment.ownercount %></td>
+        <td><%= advertisment.price %></td>
+        <td><%= advertisment.color %></td>
+        <td><%= advertisment.fueltype %></td>
+        <td><%= @brands.find(advertisment.brand_id).name %></td>
+        <td><%= advertisment.user_id %></td>
+        <td><%= @variants.find(advertisment.variant_id).model %></td>
+        <td><%= link_to 'Show', advertisment %></td>
+        <td><%= link_to 'Edit', edit_advertisment_path(advertisment) %></td>
+        <td><%= link_to 'Destroy', advertisment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Advertisment', new_advertisment_path %>
